@@ -57,6 +57,18 @@ Category satisfaction matrix with conditional formatting
 Delivery performance by state
 NPS Score calculation
 
+## 📊 How to View Dashboard
+
+**Option 1: Download .pbix File**
+1. Download [Olist_Ecommerce_Analytics.pbix](./Olist_Ecommerce_Analytics.pbix)
+2. Open with Power BI Desktop
+3. Connect to PostgreSQL (optional) or view offline
+
+**Option 2: View Screenshots**
+- [Page 1: Sales Intelligence](#page-1-sales-intelligence-dashboard)
+- [Page 2: Geographic & Product](#page-2-geographic--product-analytics)
+- [Page 3: Delivery & Operations](#page-3-delivery--operations-performance)
+
 🔑 Key Insights
 Business Insights Discovered:
 
