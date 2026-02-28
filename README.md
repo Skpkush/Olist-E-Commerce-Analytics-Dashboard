@@ -120,7 +120,9 @@ What-If Parameters: Interactive scenario analysis
 Conditional Formatting: 4 types (icons, data bars, colors, fonts)
 Time Intelligence: MoM growth, YTD, running totals
 
-📁 Project Structure olist-ecommerce-analytics/
+📁 Project Structure 
+'''
+olist-ecommerce-analytics/
 │
 ├── data/
 │   └── raw/                       # Original Olist dataset (9 CSV files)
@@ -138,6 +140,7 @@ Time Intelligence: MoM growth, YTD, running totals
 │   └── page3_delivery_operations.png
 │
 └── README.md
+'''
 
 📊 Data Model Star Schema Design
 
