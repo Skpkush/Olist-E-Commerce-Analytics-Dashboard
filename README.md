@@ -120,18 +120,17 @@ What-If Parameters: Interactive scenario analysis
 Conditional Formatting: 4 types (icons, data bars, colors, fonts)
 Time Intelligence: MoM growth, YTD, running totals
 
-📁 Project Structure
-olist-ecommerce-analytics/
+📁 Project Structure olist-ecommerce-analytics/
 │
 ├── data/
-│   └── raw/                          # Original Olist dataset (9 CSV files)
+│   └── raw/                       # Original Olist dataset (9 CSV files)
 │
 ├── sql/
-│   ├── data_cleaning.sql             # Data cleaning queries
-│   └── star_schema_creation.sql      # Star schema DDL
+│   ├── data_cleaning.sql           # Data cleaning queries
+│   └── star_schema_creation.sql    # Star schema DDL
 │
 ├── powerbi/
-│   └── Olist_Ecommerce_Analytics.pbix  # Power BI dashboard file
+│   └── Olist_Ecommerce_Analytics.pbix   # Power BI dashboard file
 │
 ├── screenshots/
 │   ├── page1_sales_intelligence.png
@@ -139,17 +138,16 @@ olist-ecommerce-analytics/
 │   └── page3_delivery_operations.png
 │
 └── README.md
-📊 Data Model
-Star Schema Design
-         dim_customer (99,442)
-              ↓
-         customer_id
-              ↓
-    dim_product (32,951) → fact_sales (112,987) ← dim_date (634)
-              ↑                ↑
-         product_id       seller_id
-              ↑                ↑
-         dim_seller (3,096)
+
+📊 Data Model Star Schema Design
+
+dim_customer (99,442)
+↓ customer_id ↓
+dim_product (32,951) → fact_sales (112,987) ← dim_date (634)
+↑ product_id          seller_id ↑
+                      ↑
+                      dim_seller (3,096)
+
 Dimension Tables:
 
 dim_customer: Customer demographics and behavior
