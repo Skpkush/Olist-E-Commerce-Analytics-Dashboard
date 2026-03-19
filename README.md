@@ -14,10 +14,6 @@
 <img width="1128" height="627" alt="Screenshot 2026-02-20 161652" src="https://github.com/user-attachments/assets/0652a9f0-3558-4819-b099-66a3ec8f3262" />
 <img width="1119" height="626" alt="Screenshot 2026-02-20 161703" src="https://github.com/user-attachments/assets/aa224581-67db-4d35-819d-9ee6632bf5f5" />
 
-
-
-
-
 ---
 
 ## 📊 Project Overview
@@ -105,7 +101,7 @@ Analyze Olist's Brazilian e-commerce marketplace (2016–2018) to:
 
 ### Page 1: Sales Intelligence Dashboard
 
-![Sales Intelligence Dashboard](images/page1_sales_intelligence.png)
+<img width="1130" height="634" alt="Screenshot 2026-02-20 161416" src="https://github.com/user-attachments/assets/6a6b67e1-602b-4a42-b300-9f12b1769372" />
 
 **Features:**
 - AI-powered Decomposition Tree for revenue analysis
@@ -116,7 +112,7 @@ Analyze Olist's Brazilian e-commerce marketplace (2016–2018) to:
 
 ### Page 2: Geographic & Product Analytics
 
-![Geographic Product Analytics](images/page2_geographic_product.png)
+<img width="1128" height="627" alt="Screenshot 2026-02-20 161652" src="https://github.com/user-attachments/assets/0652a9f0-3558-4819-b099-66a3ec8f3262" />
 
 **Features:**
 - Interactive state heatmap
@@ -126,9 +122,7 @@ Analyze Olist's Brazilian e-commerce marketplace (2016–2018) to:
 - Top performer identification
 
 ### Page 3: Delivery & Operations Performance
-
-![Delivery Operations Performance](images/page3_delivery_operations.png)
-
+<img width="1119" height="626" alt="Screenshot 2026-02-20 161703" src="https://github.com/user-attachments/assets/aa224581-67db-4d35-819d-9ee6632bf5f5" />
 **Features:**
 - On-time delivery gauge with target tracking
 - Review score distribution analysis
