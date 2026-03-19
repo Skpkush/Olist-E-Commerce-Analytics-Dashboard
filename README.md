@@ -4,185 +4,244 @@ An end-to-end data analytics project featuring advanced Power BI dashboards with
 <img width="1128" height="627" alt="Screenshot 2026-02-20 161652" src="https://github.com/user-attachments/assets/0652a9f0-3558-4819-b099-66a3ec8f3262" />
 <img width="1119" height="626" alt="Screenshot 2026-02-20 161703" src="https://github.com/user-attachments/assets/aa224581-67db-4d35-819d-9ee6632bf5f5" />
 
+# Olist E-Commerce Analytics Dashboard
 
-📊 Project Overview
-This project demonstrates a complete data analytics workflow from data cleaning through to interactive dashboard creation, featuring:
+> **End-to-end data analytics project** featuring a full Azure cloud pipeline, advanced Power BI dashboards with AI-powered insights, and a production-grade star schema — built on Brazilian e-commerce data.
 
-9 raw tables cleaned and transformed using PostgreSQL
-Star schema data warehouse with 4 dimensions + 1 fact table
-40+ DAX measures for advanced analytics
-3 interactive dashboard pages with AI/ML features
-Advanced visualizations including decomposition trees, key influencers, and what-if analysis
+[![Python](https://img.shields.io/badge/SQL-PostgreSQL-336791?style=flat&logo=postgresql)](https://www.postgresql.org/)
+[![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=flat&logo=powerbi)](https://powerbi.microsoft.com/)
+[![Azure](https://img.shields.io/badge/Azure-Cloud%20Pipeline-0078D4?style=flat&logo=microsoftazure)](https://azure.microsoft.com/)
 
-🎯 Business Problem
-Analyze Olist's Brazilian e-commerce marketplace (2016-2018) to:
+---
 
-Identify sales trends and patterns
-Understand customer behavior and retention
-Optimize delivery operations
-Improve product performance
-Provide actionable business insights
+## 📊 Project Overview
 
-📸 Dashboard Screenshots
-Page 1: Sales Intelligence Dashboard
-<img width="1130" height="634" alt="Screenshot 2026-02-20 161416" src="https://github.com/user-attachments/assets/6e012918-ab0b-41d5-9f1e-da89d074c0b4" />
+This project demonstrates a **complete, production-grade data analytics workflow** — from raw CSV files in cloud storage all the way through to an interactive Power BI dashboard — featuring:
 
-Features:
+- **Azure cloud pipeline**: Blob Storage → Azure Data Factory → Azure PostgreSQL
+- **9 raw tables** cleaned and loaded via automated ADF pipeline
+- **Star schema data warehouse** with 4 dimensions + 1 fact table (112,650 records)
+- **40+ DAX measures** for advanced analytics
+- **3 interactive dashboard pages** with AI/ML features
+- **Advanced visualizations** including decomposition trees, key influencers, and what-if analysis
 
-AI-powered Decomposition Tree for revenue analysis
-ML Key Influencers showing what drives customer satisfaction
-Animated scatter plot with play axis
-What-If parameter for price change simulation
-Conditional formatting with icons and data bars
+---
 
-Page 2: Geographic & Product Analytics
-<img width="1128" height="627" alt="Screenshot 2026-02-20 161652" src="https://github.com/user-attachments/assets/f0e7d220-91a4-4423-8f58-292aef8f00ba" />
+## ☁️ Azure Cloud Extension
 
-Features:
+This project has been extended with a full **Azure cloud data pipeline** — replacing the local PostgreSQL setup with a production-grade cloud architecture.
 
-Interactive state heatmap
-Product performance scatter analysis
-Hierarchical matrix (State → City drill-down)
-Category revenue trends over time
-Top performer identification
-
-Page 3: Delivery & Operations Performance
-<img width="1119" height="626" alt="Screenshot 2026-02-20 161703" src="https://github.com/user-attachments/assets/5ccc2844-41ce-4ff0-8515-3ed83cd37de9" />
-
-Features:
-
-On-time delivery gauge with target tracking
-Review score distribution analysis
-Category satisfaction matrix with conditional formatting
-Delivery performance by state
-NPS Score calculation
-
-## 📊 How to View Dashboard
-
-**Option 1: Download .pbix File**
-1. Download [Olist_Ecommerce_Analytics.pbix](./Olist_Ecommerce_Analytics.pbix)
-2. Open with Power BI Desktop
-3. Connect to PostgreSQL (optional) or view offline
-
-**Option 2: View Screenshots**
-- [Page 1: Sales Intelligence](#page-1-sales-intelligence-dashboard)
-- [Page 2: Geographic & Product](#page-2-geographic--product-analytics)
-- [Page 3: Delivery & Operations](#page-3-delivery--operations-performance)
-
-🔑 Key Insights
-Business Insights Discovered:
-
-Customer Retention Crisis: 100% of customers are one-time buyers (98,666 customers = 98,666 orders)
-Recommendation: Implement loyalty program and email remarketing
-
-
-Geographic Concentration Risk: SP state accounts for 38.3% of total revenue
-Recommendation: Diversify market presence across other states
-
-
-Strong Operational Performance: 91.89% on-time delivery rate exceeds 90% target
-Strength: Efficient logistics operations
-
-
-High Customer Satisfaction: 89% of reviews are 4-5 stars (63K+ five-star reviews)
-Strength: Quality products and service
-
-
-Revenue Decline Trend: Clear downward trend visible from 2017 to 2018
-Alert: Investigate causes and implement growth strategies
-
-
-Category Performance: health_beauty dominates with R$1.4M revenue
-Opportunity: Expand successful categories
-
-
-Delivery Variance: AP state takes 28 days vs. 21-day average
-Improvement Area: Optimize logistics for remote states
-
-
-
-🛠️ Technologies Used
-Database & Data Engineering
-
-PostgreSQL 16: Data storage and transformation
-SQL: Data cleaning, star schema creation, complex queries
-
-Business Intelligence
-
-Power BI Desktop: Dashboard development
-DAX: 40+ calculated measures and KPIs
-Power Query: Data loading and transformation
-
-Advanced Features
-
-AI Visualizations: Decomposition Tree, Key Influencers
-What-If Parameters: Interactive scenario analysis
-Conditional Formatting: 4 types (icons, data bars, colors, fonts)
-Time Intelligence: MoM growth, YTD, running totals
+### Pipeline Architecture
 
 ```
-📁 Project Structure olist-ecommerce-analytics/
-│
-├── data/
-│   └── raw/                       # Original Olist dataset (9 CSV files)
+Azure Blob Storage (9 raw CSVs)
+          ↓
+Azure Data Factory (automated ETL pipeline)
+          ↓
+Azure PostgreSQL — raw.* (9 tables, 112,650+ records)
+          ↓
+Azure PostgreSQL — cleaned.* (Star Schema)
+          ↓
+Power BI Desktop (connected to cloud database)
+```
+
+### Azure Services Used
+
+| Service | Role | Free Tier |
+|---|---|---|
+| Azure Blob Storage | Raw CSV file storage (9 files) | ✅ 5 GB free |
+| Azure Data Factory | ETL pipeline with scheduled trigger | ✅ 1K runs/month |
+| Azure PostgreSQL Flexible Server | Cloud-hosted star schema database | Credits used |
+| Azure Key Vault | Secrets management for credentials | ✅ 10K ops free |
+| Azure Monitor | Pipeline failure alerts, cost budgets | ✅ Basic free |
+
+### Key Cloud Concepts Demonstrated
+
+- **Linked Services** — connecting ADF to Blob Storage and PostgreSQL
+- **Datasets** — parameterized source/sink data pointers
+- **Copy Activities** — automated CSV → PostgreSQL data loading
+- **Pre-copy scripts** — TRUNCATE before load to prevent duplicates
+- **Pipeline orchestration** — dimension tables loaded before fact table (foreign key order)
+- **CTE-based deduplication** — preventing row explosion on multi-row joins
+- **Performance indexing** — indexes on all join and filter columns for Power BI speed
+
+### Star Schema (Cloud)
+
+```
+dim_customer (99,441)     dim_product (32,951)
+       ↓ customer_id              ↓ product_id
+       └──────────────────────────┘
+                    ↓
+              fact_sales (112,650)
+                    ↑
+       ┌──────────────────────────┐
+       ↑ seller_id                ↑ date_key
+dim_seller (3,095)          dim_date (634)
+```
+
+> **Note:** Power BI Desktop is connected directly to Azure PostgreSQL. Power BI Service publishing requires a Pro license — upgrade path identified for production deployment.
+
+---
+
+## 🎯 Business Problem
+
+Analyze Olist's Brazilian e-commerce marketplace (2016–2018) to:
+
+- Identify sales trends and patterns
+- Understand customer behavior and retention
+- Optimize delivery operations
+- Improve product performance
+- Provide actionable business insights
+
+---
+
+## 📸 Dashboard Screenshots
+
+### Page 1: Sales Intelligence Dashboard
+
+![Sales Intelligence Dashboard](images/page1_sales_intelligence.png)
+
+**Features:**
+- AI-powered Decomposition Tree for revenue analysis
+- ML Key Influencers showing what drives customer satisfaction
+- Animated scatter plot with play axis
+- What-If parameter for price change simulation
+- Conditional formatting with icons and data bars
+
+### Page 2: Geographic & Product Analytics
+
+![Geographic Product Analytics](images/page2_geographic_product.png)
+
+**Features:**
+- Interactive state heatmap
+- Product performance scatter analysis
+- Hierarchical matrix (State → City drill-down)
+- Category revenue trends over time
+- Top performer identification
+
+### Page 3: Delivery & Operations Performance
+
+![Delivery Operations Performance](images/page3_delivery_operations.png)
+
+**Features:**
+- On-time delivery gauge with target tracking
+- Review score distribution analysis
+- Category satisfaction matrix with conditional formatting
+- Delivery performance by state
+- NPS Score calculation
+
+---
+
+## 🔑 Key Insights
+
+| Insight | Finding | Action |
+|---|---|---|
+| Customer Retention Crisis | 100% one-time buyers (99,441 customers = 99,441 orders) | Implement loyalty program and email remarketing |
+| Geographic Concentration | SP state = 38.3% of total revenue | Diversify market presence |
+| Strong Operations | 91.89% on-time delivery rate exceeds 90% target | Maintain logistics efficiency |
+| High Satisfaction | 89% of reviews are 4–5 stars | Leverage for marketing |
+| Revenue Decline | Downward trend from 2017 to 2018 | Investigate and implement growth strategy |
+| Category Leader | health_beauty dominates with R$1.4M revenue | Expand successful categories |
+| Delivery Variance | AP state takes 28 days vs. 21-day average | Optimize remote state logistics |
+
+---
+
+## 🛠️ Technologies Used
+
+### Azure Cloud Stack
+
+| Service | Purpose |
+|---|---|
+| Azure Blob Storage | Raw data lake for 9 CSV source files |
+| Azure Data Factory | Automated ETL pipeline with daily trigger |
+| Azure PostgreSQL Flexible Server | Cloud-hosted relational database |
+| Azure Key Vault | Secrets and credentials management |
+| Azure Monitor | Pipeline alerts and cost budgeting |
+
+### Database & Data Engineering
+
+| Tool | Purpose |
+|---|---|
+| PostgreSQL 16 (Azure) | Cloud data storage and transformation |
+| SQL | Data cleaning, star schema, complex queries |
+| CTE optimization | Deduplication before joins (prevents row explosion) |
+| Performance indexing | 10 indexes across raw + cleaned schemas |
+
+### Business Intelligence
+
+| Tool | Purpose |
+|---|---|
+| Power BI Desktop | Dashboard development, connected to Azure PostgreSQL |
+| DAX | 40+ calculated measures and KPIs |
+| Power Query | Data loading and transformation |
+
+### Advanced Features
+
+| Feature | Implementation |
+|---|---|
+| AI Visualizations | Decomposition Tree, Key Influencers |
+| What-If Parameters | Interactive price simulation |
+| Conditional Formatting | 4 types: icons, data bars, colors, fonts |
+| Time Intelligence | MoM growth, YTD, running totals |
+
+---
+
+## 📁 Project Structure
+
+```
+olist-ecommerce-analytics/
 │
 ├── sql/
-│   ├── data_cleaning.sql           # Data cleaning queries
-│   └── star_schema_creation.sql    # Star schema DDL
+│   ├── Datacleaning.sql              # Data cleaning queries
+│   ├── Table creation.sql            # Raw schema DDL (raw.*)
+│   ├── Starschema.sql                # Star schema DDL (cleaned.*)
+│   └── starschema_production.sql     # Optimized production version
 │
 ├── powerbi/
-│   └── Olist_Ecommerce_Analytics.pbix   # Power BI dashboard file
+│   └── olistvisusal.pbix             # Power BI dashboard file
 │
-├── screenshots/
+├── images/
 │   ├── page1_sales_intelligence.png
 │   ├── page2_geographic_product.png
 │   └── page3_delivery_operations.png
 │
 └── README.md
-
-📊 Data Model Star Schema Design
-
-dim_customer (99,442)
-↓ customer_id ↓
-dim_product (32,951) → fact_sales (112,987) ← dim_date (634)
-↑ product_id          seller_id ↑
-                      ↑
-                      dim_seller (3,096)
-
-Dimension Tables:
 ```
 
-📊 Data Model Star Schema Design
+---
 
-dim_customer (99,442)
-↓ customer_id ↓
-dim_product (32,951) → fact_sales (112,987) ← dim_date (634)
-↑ product_id          seller_id ↑
-                      ↑
-                      dim_seller (3,096)
+## 📊 Data Model
 
-Dimension Tables:
+### Dimension Tables
 
-dim_customer: Customer demographics and behavior
-dim_product: Product catalog with performance metrics
-dim_seller: Seller information and ratings
-dim_date: Time dimension with full hierarchy
+| Table | Rows | Key Columns |
+|---|---|---|
+| dim_customer | 99,441 | customer_id, segment, value_category, total_orders |
+| dim_product | 32,951 | product_id, category, performance, avg_price |
+| dim_seller | 3,095 | seller_id, city, state, performance_category |
+| dim_date | 634 | date_key, year, month, quarter, day_type |
 
-Fact Table:
+### Fact Table
 
-fact_sales: Transactional data with 112,987 records
+| Table | Rows | Key Measures |
+|---|---|---|
+| fact_sales | 112,650 | item_price, order_total, delivery_days, review_score |
 
-🔢 Key Metrics & DAX Measures
-Revenue Metrics
-daxTotal Revenue = ROUND(SUM('cleaned fact_sales'[item_price]), 2)
+---
 
-MoM Revenue Growth % = 
+## 🔢 Key DAX Measures
+
+### Revenue Metrics
+
+```dax
+Total Revenue = ROUND(SUM('cleaned fact_sales'[item_price]), 2)
+
+MoM Revenue Growth % =
 VAR CurrentMonth = [Total Revenue]
 VAR LastMonth = [Revenue Last Month]
-RETURN
-    DIVIDE(CurrentMonth - LastMonth, LastMonth) * 100
+RETURN DIVIDE(CurrentMonth - LastMonth, LastMonth) * 100
 
-Revenue Running Total = 
+Revenue Running Total =
 CALCULATE(
     [Total Revenue],
     FILTER(
@@ -190,150 +249,181 @@ CALCULATE(
         'cleaned dim_date'[full_date] <= MAX('cleaned dim_date'[full_date])
     )
 )
-Customer Metrics
-daxCustomer Retention Rate % = 
+```
+
+### Customer Metrics
+
+```dax
+Customer Retention Rate % =
 ROUND(
-    DIVIDE(
-        [Repeat Customers] + [Loyal Customers],
-        [Total Customers]
-    ) * 100,
+    DIVIDE([Repeat Customers] + [Loyal Customers], [Total Customers]) * 100,
     2
 )
 
-NPS Score = 
+NPS Score =
 VAR Promoters = CALCULATE([Total Reviews], review_score >= 4)
 VAR Detractors = CALCULATE([Total Reviews], review_score <= 2)
-RETURN
-    ROUND(DIVIDE(Promoters - Detractors, [Total Reviews]) * 100, 0)
-Operational Metrics
-daxOn-Time Delivery % = 
+RETURN ROUND(DIVIDE(Promoters - Detractors, [Total Reviews]) * 100, 0)
+```
+
+### Operational Metrics
+
+```dax
+On-Time Delivery % =
 VAR OnTime = CALCULATE([Total Orders], delivered_on_time = TRUE())
 VAR Delivered = [Delivered Orders]
-RETURN
-    ROUND(DIVIDE(OnTime, Delivered) * 100, 2)
-🚀 How to Use This Project
-Prerequisites
+RETURN ROUND(DIVIDE(OnTime, Delivered) * 100, 2)
+```
 
-PostgreSQL 14+ installed
-Power BI Desktop (latest version)
-4GB RAM minimum
+---
 
-Setup Instructions
+## 🚀 How to Run This Project
 
-Clone the Repository
+### Option A — Cloud Setup (Azure)
 
-bashgit clone https://github.com/yourusername/olist-ecommerce-analytics.git
-cd olist-ecommerce-analytics
+**Prerequisites:**
+- Azure account (free trial sufficient)
+- pgAdmin installed locally
+- Power BI Desktop installed
 
-Download the Dataset
+**Steps:**
 
-Download from Kaggle: Brazilian E-Commerce Public Dataset by Olist
-Extract to data/raw/ folder
+1. **Clone the repository**
+```bash
+git clone https://github.com/Skpkush/Olist-E-Commerce-Analytics-Dashboard.git
+cd Olist-E-Commerce-Analytics-Dashboard
+```
 
+2. **Download the dataset**
+   - Download from [Kaggle — Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+   - Extract all 9 CSV files
 
-Set Up PostgreSQL Database
+3. **Set up Azure resources**
+   - Create Azure Blob Storage → upload 9 CSVs to `raw` container
+   - Create Azure PostgreSQL Flexible Server
+   - Create Azure Data Factory → build pipeline (CSV → PostgreSQL)
+   - Run `sql/Table creation.sql` in pgAdmin connected to Azure PostgreSQL
+   - Run ADF pipeline once to load raw data
+   - Run `sql/starschema_production.sql` block by block to build star schema
 
-sql-- Create database
-CREATE DATABASE Olist_db;
+4. **Connect Power BI Desktop**
+   - Open `powerbi/olistvisusal.pbix`
+   - Update data source → Azure PostgreSQL server
+   - Refresh data
 
--- Create schema
+### Option B — Local Setup
+
+**Prerequisites:**
+- PostgreSQL 14+ installed locally
+- Power BI Desktop installed
+
+**Steps:**
+
+1. Clone repository and download dataset (same as above)
+
+2. **Set up local PostgreSQL**
+```sql
+CREATE DATABASE OlistDB;
+CREATE SCHEMA raw;
 CREATE SCHEMA cleaned;
+```
 
--- Load raw data into tables (use pgAdmin or COPY command)
--- Run data cleaning queries from sql/data_cleaning.sql
--- Run star schema creation from sql/star_schema_creation.sql
+3. Run `sql/Table creation.sql` → import CSVs → run `sql/starschema_production.sql`
 
-Open Power BI Dashboard
+4. Open `powerbi/olistvisusal.pbix` → connect to local PostgreSQL → refresh
 
-Open powerbi/Olist_Ecommerce_Analytics.pbix
-Update data source connection to your PostgreSQL instance
-Refresh data
+---
 
+## 📈 Dashboard Features
 
+### Advanced Visualizations
 
-📈 Dashboard Features
-Advanced Visualizations
+| Visual | Purpose |
+|---|---|
+| Decomposition Tree | AI-powered hierarchical revenue analysis |
+| Key Influencers | ML-driven customer satisfaction factors |
+| Play Axis | Animated time-series scatter plot |
+| What-If Parameters | Interactive price change simulation |
+| Conditional Formatting | Multi-level visual encoding |
 
-Decomposition Tree: AI-powered hierarchical analysis
-Key Influencers: ML-driven factor analysis
-Play Axis: Animated time-series scatter plot
-What-If Parameters: Interactive price simulation
-Conditional Formatting: Multi-level visual encoding
+### Interactive Elements
 
-Interactive Elements
+- **3 Synced Slicers**: Date range, Product category, Customer state
+- **Cross-filtering**: Click any visual to filter others
+- **Drill-through**: Right-click for detailed views
+- **Tooltips**: Hover for additional metrics
 
-3 Synced Slicers: Date range, Product category, Customer state
-Cross-filtering: Click any visual to filter others
-Drill-through: Right-click for detailed views
-Tooltips: Hover for additional metrics
+---
 
-💡 Skills Demonstrated
-Technical Skills
+## 💡 Skills Demonstrated
 
-✅ SQL data cleaning and transformation
+### Cloud & Data Engineering
+✅ Azure cloud pipeline design and implementation
+✅ Azure Data Factory — Linked Services, Datasets, Copy Activities
+✅ Azure Blob Storage — containers, file management
+✅ Azure PostgreSQL — cloud database hosting and management
+✅ ETL pipeline orchestration with dependency management
+✅ SQL performance optimization — CTEs, indexes, deduplication
+
+### Business Intelligence
 ✅ Star schema dimensional modeling
-✅ Complex DAX calculations
+✅ Complex DAX calculations and time intelligence
 ✅ Advanced Power BI visualizations
-✅ AI/ML feature implementation
-✅ Data warehouse design
-
-Analytical Skills
-
-✅ Business problem identification
+✅ AI/ML feature implementation (Key Influencers, Decomposition Tree)
 ✅ KPI definition and tracking
-✅ Trend analysis
-✅ Customer segmentation
-✅ Performance benchmarking
-✅ Actionable insights generation
 
-Business Acumen
-
+### Analytical & Business Skills
 ✅ E-commerce domain understanding
-✅ Customer retention strategies
-✅ Operational efficiency analysis
+✅ Customer retention strategy analysis
+✅ Operational efficiency measurement
 ✅ Geographic market analysis
-✅ Product portfolio optimization
+✅ Actionable insight generation
 
-📊 Dataset Information
-Source: Kaggle - Brazilian E-Commerce Public Dataset by Olist
-Time Period: September 2016 - October 2018
-Size:
+---
 
-9 tables
-112,987 order items
-98,666 orders
-98,666 customers
-32,951 products
-3,096 sellers
+## 📊 Dataset Information
 
-Geographic Coverage: 27 Brazilian states, 4,110 cities
-🎓 Learning Outcomes
-Through this project, I developed expertise in:
+| Property | Detail |
+|---|---|
+| Source | Kaggle — Brazilian E-Commerce Public Dataset by Olist |
+| Time Period | September 2016 – October 2018 |
+| Orders | 99,441 |
+| Order Items | 112,650 |
+| Customers | 99,441 |
+| Products | 32,951 |
+| Sellers | 3,095 |
+| Geographic Coverage | 27 Brazilian states, 4,110+ cities |
 
-Building production-ready data pipelines
-Designing efficient dimensional models
-Creating interactive business intelligence dashboards
-Implementing AI/ML visualizations
-Deriving actionable business insights from data
-Presenting complex analyses to stakeholders
+---
 
-🔮 Future Enhancements
+## 🔮 Future Enhancements
 
- Add predictive analytics (customer churn prediction)
- Implement real-time data refresh
- Create mobile-optimized views
- Add natural language Q&A with Power BI Q&A
- Develop Python integration for advanced ML models
- Add automated email reports
- Create drill-through pages for detailed analysis
+- [ ] Add predictive analytics — customer churn prediction model
+- [ ] Implement Azure Synapse Analytics for serverless SQL queries on raw files
+- [ ] Add Azure Monitor alerts for pipeline failures
+- [ ] Develop Python integration for advanced ML models
+- [ ] Add automated email reports via Power Automate
+- [ ] Create drill-through pages for detailed customer analysis
+- [ ] Power BI Service deployment (requires Pro license)
 
-📞 Contact
-Sumit Prajapat
+---
 
-📧 Email: sumitkprajapat@gmail.com
+## 📞 Contact
 
-🙏 Acknowledgments
+**Sumit Prajapat** | Data Analyst
 
-Dataset provided by Olist and made available on Kaggle
-Power BI community for inspiration and best practices
-SQL and DAX documentation resources
+📧 [sumitkprajapat@gmail.com](mailto:sumitkprajapat@gmail.com)
+💼 [LinkedIn](https://www.linkedin.com/in/sumit-k-prajapat/)
+🐙 [GitHub](https://github.com/Skpkush)
+
+---
+
+## 🙏 Acknowledgments
+
+- Dataset provided by Olist and made available on Kaggle
+- Microsoft Azure documentation and Power BI community
+- SQL and DAX documentation resources
+
+---
+
+*Built as part of a senior-level data analyst portfolio demonstrating end-to-end cloud data engineering, SQL, and business intelligence skills.*
