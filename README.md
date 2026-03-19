@@ -359,25 +359,39 @@ CREATE SCHEMA cleaned;
 
 ### Cloud & Data Engineering
 ✅ Azure cloud pipeline design and implementation
+
 ✅ Azure Data Factory — Linked Services, Datasets, Copy Activities
+
 ✅ Azure Blob Storage — containers, file management
+
 ✅ Azure PostgreSQL — cloud database hosting and management
+
 ✅ ETL pipeline orchestration with dependency management
+
 ✅ SQL performance optimization — CTEs, indexes, deduplication
 
 ### Business Intelligence
 ✅ Star schema dimensional modeling
+
 ✅ Complex DAX calculations and time intelligence
+
 ✅ Advanced Power BI visualizations
+
 ✅ AI/ML feature implementation (Key Influencers, Decomposition Tree)
+
 ✅ KPI definition and tracking
 
 ### Analytical & Business Skills
 ✅ E-commerce domain understanding
+
 ✅ Customer retention strategy analysis
+
 ✅ Operational efficiency measurement
+
 ✅ Geographic market analysis
+
 ✅ Actionable insight generation
+
 
 ---
 
