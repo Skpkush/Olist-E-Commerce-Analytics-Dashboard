@@ -1,8 +1,3 @@
-# Olist-E-Commerce-Analytics-Dashboard
-An end-to-end data analytics project featuring advanced Power BI dashboards with AI-powered insights, built on Brazilian e-commerce data.
-<img width="1130" height="634" alt="Screenshot 2026-02-20 161416" src="https://github.com/user-attachments/assets/6a6b67e1-602b-4a42-b300-9f12b1769372" />
-<img width="1128" height="627" alt="Screenshot 2026-02-20 161652" src="https://github.com/user-attachments/assets/0652a9f0-3558-4819-b099-66a3ec8f3262" />
-<img width="1119" height="626" alt="Screenshot 2026-02-20 161703" src="https://github.com/user-attachments/assets/aa224581-67db-4d35-819d-9ee6632bf5f5" />
 
 # Olist E-Commerce Analytics Dashboard
 
@@ -11,6 +6,17 @@ An end-to-end data analytics project featuring advanced Power BI dashboards with
 [![Python](https://img.shields.io/badge/SQL-PostgreSQL-336791?style=flat&logo=postgresql)](https://www.postgresql.org/)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=flat&logo=powerbi)](https://powerbi.microsoft.com/)
 [![Azure](https://img.shields.io/badge/Azure-Cloud%20Pipeline-0078D4?style=flat&logo=microsoftazure)](https://azure.microsoft.com/)
+
+
+<img width="1854" height="765" alt="Screenshot 2026-03-19 150312" src="https://github.com/user-attachments/assets/6d7dbcc2-eef6-4926-8082-625d218520db" />
+<img width="1845" height="784" alt="Screenshot 2026-03-19 150329" src="https://github.com/user-attachments/assets/44e87d40-4a2b-4bd8-9c28-9c763459dbc2" />
+<img width="1130" height="634" alt="Screenshot 2026-02-20 161416" src="https://github.com/user-attachments/assets/6a6b67e1-602b-4a42-b300-9f12b1769372" />
+<img width="1128" height="627" alt="Screenshot 2026-02-20 161652" src="https://github.com/user-attachments/assets/0652a9f0-3558-4819-b099-66a3ec8f3262" />
+<img width="1119" height="626" alt="Screenshot 2026-02-20 161703" src="https://github.com/user-attachments/assets/aa224581-67db-4d35-819d-9ee6632bf5f5" />
+
+
+
+
 
 ---
 
