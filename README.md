@@ -217,7 +217,8 @@ Olist-E-Commerce-Analytics-Dashboard/
 │   ├── page1_sales_intelligence.png
 │   ├── page2_geographic_product.png
 │   └── page3_delivery_operations.png
-│
+|   └── azure_Adf_pipeline_run.png
+|   └── azure_pipeline.png
 └── README.md
 ```
 
