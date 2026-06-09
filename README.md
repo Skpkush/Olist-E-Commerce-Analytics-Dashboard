@@ -198,7 +198,7 @@ olist-ecommerce-analytics/
 │   └── starschema_production.sql     # Optimized production version
 │
 ├── powerbi/
-│   └── olistvisusal.pbix             # Power BI dashboard file
+│   └── Olist_Dashboard.pbix             # Power BI dashboard file
 │
 ├── images/
 │   ├── page1_sales_intelligence.png
@@ -307,7 +307,7 @@ cd Olist-E-Commerce-Analytics-Dashboard
    - Run `sql/starschema_production.sql` block by block to build star schema
 
 4. **Connect Power BI Desktop**
-   - Open `powerbi/olistvisusal.pbix`
+   - Open `powerbi/Olist_Dashboard.pbix`
    - Update data source → Azure PostgreSQL server
    - Refresh data
 
@@ -330,7 +330,7 @@ CREATE SCHEMA cleaned;
 
 3. Run `sql/Table creation.sql` → import CSVs → run `sql/starschema_production.sql`
 
-4. Open `powerbi/olistvisusal.pbix` → connect to local PostgreSQL → refresh
+4. Open `powerbi/Olist_Dashboard.pbix` → connect to local PostgreSQL → refresh
 
 ---
 
