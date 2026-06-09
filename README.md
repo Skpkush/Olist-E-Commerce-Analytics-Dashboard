@@ -1,4 +1,3 @@
-
 # Olist E-Commerce Analytics Dashboard
 
 > **End-to-end data analytics project** featuring a full Azure cloud pipeline, advanced Power BI dashboards with AI-powered insights, and a production-grade star schema — built on Brazilian e-commerce data.
@@ -41,6 +40,12 @@ Azure PostgreSQL — cleaned.* (Star Schema)
           ↓
 Power BI Desktop (connected to cloud database)
 ```
+
+### Pipeline in Azure Data Factory
+
+<img width="900" alt="Azure Data Factory pipeline overview" src="https://github.com/user-attachments/assets/6d7dbcc2-eef6-4926-8082-625d218520db" />
+
+<img width="900" alt="ADF copy activities and pipeline run" src="https://github.com/user-attachments/assets/44e87d40-4a2b-4bd8-9c28-9c763459dbc2" />
 
 ### Azure Services Used
 
