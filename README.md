@@ -1,9 +1,8 @@
-
 # Olist E-Commerce Analytics Dashboard
 
 > **End-to-end data analytics project** featuring a full Azure cloud pipeline, advanced Power BI dashboards with AI-powered insights, and a production-grade star schema — built on Brazilian e-commerce data.
 
-[![Python](https://img.shields.io/badge/SQL-PostgreSQL-336791?style=flat&logo=postgresql)](https://www.postgresql.org/)
+[![SQL](https://img.shields.io/badge/SQL-PostgreSQL-336791?style=flat&logo=postgresql)](https://www.postgresql.org/)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=flat&logo=powerbi)](https://powerbi.microsoft.com/)
 [![Azure](https://img.shields.io/badge/Azure-Cloud%20Pipeline-0078D4?style=flat&logo=microsoftazure)](https://azure.microsoft.com/)
 
@@ -81,6 +80,8 @@ dim_customer (99,441)     dim_product (32,951)
 dim_seller (3,095)          dim_date (634)
 ```
 
+> **Note:** `dim_customer` holds 99,441 customer records (one per `customer_id`), which map to **96,096 unique customers** via `customer_unique_id` — the correct grain for any retention or repeat-purchase analysis (see Key Insights).
+
 > **Note:** Power BI Desktop is connected directly to Azure PostgreSQL. Power BI Service publishing requires a Pro license — upgrade path identified for production deployment.
 
 ---
@@ -136,13 +137,15 @@ Analyze Olist's Brazilian e-commerce marketplace (2016–2018) to:
 
 | Insight | Finding | Action |
 |---|---|---|
-| Customer Retention Crisis | 100% one-time buyers (99,441 customers = 99,441 orders) | Implement loyalty program and email remarketing |
-| Geographic Concentration | SP state = 38.3% of total revenue | Diversify market presence |
-| Strong Operations | 91.89% on-time delivery rate exceeds 90% target | Maintain logistics efficiency |
-| High Satisfaction | 89% of reviews are 4–5 stars | Leverage for marketing |
-| Revenue Decline | Downward trend from 2017 to 2018 | Investigate and implement growth strategy |
-| Category Leader | health_beauty dominates with R$1.4M revenue | Expand successful categories |
-| Delivery Variance | AP state takes 28 days vs. 21-day average | Optimize remote state logistics |
+| Customer Retention Gap | **~97% of buyers are one-time customers** — of 96,096 unique customers (`customer_unique_id`), only ~3% placed a repeat order | Launch loyalty program + email remarketing to lift repeat rate |
+| Geographic Concentration | SP state = 38.3% of total revenue | Diversify market presence across other states |
+| Strong Operations | 91.89% on-time delivery rate exceeds the 90% target | Maintain logistics efficiency |
+| High Satisfaction | 89% of reviews are 4–5 stars | Leverage social proof in marketing |
+| Growth + Data Caveat | Order volume grew from 2017 into 2018; the apparent drop in the final two months (Sep–Oct 2018) is a **dataset cut-off artifact** (incomplete capture window), **not** a real downturn | Treat final-period figures as partial before acting on the trend |
+| Category Leader | `health_beauty` dominates with R$1.4M revenue | Expand successful categories |
+| Delivery Variance | AP state takes 28 days vs. the 21-day average | Optimize logistics for remote states |
+
+> **Analyst note:** Retention is measured on `customer_unique_id`, not `customer_id`. In the Olist schema every order is assigned a fresh `customer_id`, so counting `customer_id` would falsely show 0% repeat customers. The repeat rate above is computed on the deduplicated `customer_unique_id` grain.
 
 ---
 
@@ -198,7 +201,7 @@ olist-ecommerce-analytics/
 │   └── starschema_production.sql     # Optimized production version
 │
 ├── powerbi/
-│   └── Olist_Dashboard.pbix             # Power BI dashboard file
+│   └── Olist_Dashboard.pbix          # Power BI dashboard file
 │
 ├── images/
 │   ├── page1_sales_intelligence.png
@@ -216,10 +219,12 @@ olist-ecommerce-analytics/
 
 | Table | Rows | Key Columns |
 |---|---|---|
-| dim_customer | 99,441 | customer_id, segment, value_category, total_orders |
+| dim_customer | 99,441 | customer_id, **customer_unique_id**, segment, value_category, total_orders |
 | dim_product | 32,951 | product_id, category, performance, avg_price |
 | dim_seller | 3,095 | seller_id, city, state, performance_category |
 | dim_date | 634 | date_key, year, month, quarter, day_type |
+
+> `dim_customer` = 99,441 rows at `customer_id` grain → **96,096 unique customers** by `customer_unique_id`.
 
 ### Fact Table
 
@@ -254,11 +259,20 @@ CALCULATE(
 ### Customer Metrics
 
 ```dax
-Customer Retention Rate % =
-ROUND(
-    DIVIDE([Repeat Customers] + [Loyal Customers], [Total Customers]) * 100,
-    2
+-- Measured on customer_unique_id (the real person), NOT customer_id (per-order id)
+Total Customers = DISTINCTCOUNT('cleaned dim_customer'[customer_unique_id])
+
+Repeat Customers =
+CALCULATE(
+    DISTINCTCOUNT('cleaned dim_customer'[customer_unique_id]),
+    FILTER(
+        VALUES('cleaned dim_customer'[customer_unique_id]),
+        [Total Orders] > 1
+    )
 )
+
+Repeat Customer Rate % =
+ROUND(DIVIDE([Repeat Customers], [Total Customers]) * 100, 2)
 
 NPS Score =
 VAR Promoters = CALCULATE([Total Reviews], review_score >= 4)
@@ -403,7 +417,7 @@ CREATE SCHEMA cleaned;
 | Time Period | September 2016 – October 2018 |
 | Orders | 99,441 |
 | Order Items | 112,650 |
-| Customers | 99,441 |
+| Customers | 96,096 unique (99,441 customer records) |
 | Products | 32,951 |
 | Sellers | 3,095 |
 | Geographic Coverage | 27 Brazilian states, 4,110+ cities |
@@ -440,4 +454,4 @@ CREATE SCHEMA cleaned;
 
 ---
 
-*Built as part of a senior-level data analyst portfolio demonstrating end-to-end cloud data engineering, SQL, and business intelligence skills.*
+*Built as part of a data analyst portfolio demonstrating end-to-end cloud data engineering, SQL, and business intelligence skills.*
